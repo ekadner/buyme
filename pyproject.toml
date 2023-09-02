@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "buyme"
+version = "0.1.0"
+description = ""
+authors = ["ekadner <ekadner@gmailcom>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+selenium = "^4.12.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
