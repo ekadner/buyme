@@ -22,16 +22,19 @@ class SenderReceiverInformationScreen:
         for_someone.click()
 
     def input_name(self):  # שם המקבל מתנה
-        name = self.driver.find_element(By.XPATH, "//input[@title='שם מקבל המתנה']")
-        name.send_keys("Jenny")
+        name = self.driver.find_elements(By.XPATH, "//input[@class='ember-view ember-text-field']")
+        name[0].send_keys("Jenny")
+
 
     def define_event(self):  # בחירת אירוע
         self.driver.find_element(By.XPATH, "//span['לאיזה אירוע?'=.]").click()
-        self.driver.find_element(By.XPATH, "//span['יום הולדת'=.]").click()
+        define_event = self.driver.find_elements(By.XPATH, "//li[@class='ember-view bm-select-option']")
+        define_event[0].click()
 
     def write_a_greeting(self):
         clear_a_field = self.driver.find_element(By.XPATH,
-                                                 "//span[@class='textarea-clear-all ' and @aria-label='נקה הכל']")
+                                                 "//span[@role='button' and @aria-label='נקה הכל']")
+
         clear_a_field.click()
         greeting = self.driver.find_element(By.XPATH,
                                             "//textarea[@rows='4' and @data-parsley-group='voucher-greeting']")

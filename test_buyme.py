@@ -1,6 +1,9 @@
 import json
+import time
 from unittest import TestCase
 from selenium import webdriver
+import allure
+from allure_commons.types import AttachmentType
 from selenium.webdriver import Keys
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.alert import Alert
@@ -19,14 +22,14 @@ from additional_functions import AdditionalFunctions
 class TestBuyMe(TestCase):
 
     def setUp(self):
-        # self.driver = webdriver.Chrome(service=Service('C:\\Program Files\\chromedriver-win64\\chromedriver.exe'))
-        json_file = open('config.json', 'r')
-        data = json.load(json_file)
-        browser = data['browserType']
-        if browser == 'chrome':
-            self.driver = webdriver.Chrome(service=Service('C:\\Program Files\\chromedriver-win64\\chromedriver.exe'))
-        url = data('URL')
-        self.driver.get(url)
+        self.driver = webdriver.Chrome(service=Service('C:\\Program Files\\chromedriver-win64\\chromedriver.exe'))
+        # json_file = open('config.json', 'r')
+        # data = json.load(json_file)
+        # browser = data['browserType']
+        # if browser == 'chrome':
+        #     self.driver = webdriver.Chrome(service=Service('C:\\Program Files\\chromedriver-win64\\chromedriver.exe'))
+        # url = data('URL')
+        # self.driver.get(url)
         self.driver.get('https://buyme.co.il/')
         self.driver.implicitly_wait(20)
         self.driver.set_page_load_timeout(20)
@@ -38,6 +41,8 @@ class TestBuyMe(TestCase):
         print('start testing BUY ME')
 
     def test_registration_screen(self):
+        allure.attach(self.driver.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
+
         RegistrationScreen.click_enter_button(self)
         RegistrationScreen.click_registration_button(self)
         RegistrationScreen.fill_first_name_field(self)
@@ -53,14 +58,16 @@ class TestBuyMe(TestCase):
         PickBusinessScreen.fill_in_an_amount(self)
         PickBusinessScreen.click_submit_button(self)
         PickBusinessScreen.assert_url(self)
+        allure.attach(self.driver.get_screenshot_as_png(), name="test_pick_business_Screenshot", attachment_type=AttachmentType.PNG)
 
     def test_home_screen(self):
-        AdditionalFunctions.Catch_Pop_Up(self)
+        # AdditionalFunctions.Catch_Pop_Up(self)
         # HomeScreen.login(self)
         HomeScreen.choose_an_amount(self)
         HomeScreen.choose_an_area(self)
         HomeScreen.choose_a_category(self)
         HomeScreen.click_a_find_button(self)
+        self.driver.switch_to.alert.dismiss()
 
     def test_sender_receiver_information_screen(self):
         AdditionalFunctions.Catch_Pop_Up(self)
@@ -80,22 +87,11 @@ class TestBuyMe(TestCase):
         SenderReceiverInformationScreen.proceed_to_payment_button(self)
 
     def tearDown(self):
-        input('ckick enter')
         self.driver.quit()
 
 # driver = webdriver.Chrome(service=Service('C:\\Program Files\\chromedriver-win64\\chromedriver.exe'))
-# driver.get('https://buyme.co.il/')
+# driver.get('https://buyme.co.il/money/20620?price=250')
 
 
-# def execute_script(param, pick_category):
-#     execute_script("arguments[0].scrollIntoView();", pick_category)
-#     pass
 
-
-# wait = WebDriverWait(driver, 30)
-# pick_category = wait.until(expected_conditions.presence_of_element_located(
-#     (By.XPATH, "//a[@role='button' and @title='גיפט קארד למותגי אופנה']")))
-# pick_category.click()
-
-#
 # time.sleep(2)
