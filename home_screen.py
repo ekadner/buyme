@@ -29,7 +29,7 @@ class HomeScreen:
         try:
             self.driver.find_element(By.XPATH, "//span[@class='selected-text' and @alt='סכום']").click()
             self.driver.find_element(By.XPATH, "//span[contains(text(), '200-299')]").click()
-        except NoSuchElementException as e:
+        except NoSuchElementException:
             with allure.step("Element not found"):
                 allure.attach(self.driver.get_screenshot_as_png(), name="choose_an_amount",
                               attachment_type=allure.attachment_type.PNG)
@@ -42,7 +42,7 @@ class HomeScreen:
         try:
             self.driver.find_element(By.XPATH, "//span[@class='selected-text' and @alt='אזור']").click()
             self.driver.find_element(By.XPATH, "//span[contains(text(), 'ירושלים')]").click()
-        except NoSuchElementException as e:
+        except NoSuchElementException:
             with allure.step("Element not found"):
                 allure.attach(self.driver.get_screenshot_as_png(), name="choose_an_area",
                               attachment_type=allure.attachment_type.PNG)
@@ -55,7 +55,7 @@ class HomeScreen:
         try:
             self.driver.find_element(By.XPATH, "//span['קטגוריה'=.]").click()
             self.driver.find_element(By.XPATH, "//span[contains(text(), 'גיפט קארד למותגי אופנה')]").click()
-        except NoSuchElementException as e:
+        except NoSuchElementException:
             with allure.step("Element not found"):
                 allure.attach(self.driver.get_screenshot_as_png(), name="choose_a_category",
                               attachment_type=allure.attachment_type.PNG)
@@ -67,7 +67,7 @@ class HomeScreen:
     def click_a_find_button(self):
         try:
             self.driver.find_element(By.XPATH, "//*[@id='ember1199']").click()
-        except NoSuchElementException as e:
+        except NoSuchElementException:
             with allure.step("Element not found"):
                 allure.attach(self.driver.get_screenshot_as_png(), name="find_button",
                               attachment_type=allure.attachment_type.PNG)
