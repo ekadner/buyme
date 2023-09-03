@@ -23,13 +23,6 @@ class TestBuyMe(TestCase):
 
     def setUp(self):
         self.driver = webdriver.Chrome(service=Service('C:\\Program Files\\chromedriver-win64\\chromedriver.exe'))
-        # json_file = open('config.json', 'r')
-        # data = json.load(json_file)
-        # browser = data['browserType']
-        # if browser == 'chrome':
-        #     self.driver = webdriver.Chrome(service=Service('C:\\Program Files\\chromedriver-win64\\chromedriver.exe'))
-        # url = data('URL')
-        # self.driver.get(url)
         self.driver.get('https://buyme.co.il/')
         self.driver.implicitly_wait(20)
         self.driver.set_page_load_timeout(20)
@@ -41,8 +34,6 @@ class TestBuyMe(TestCase):
         print('start testing BUY ME')
 
     def test_registration_screen(self):
-        allure.attach(self.driver.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
-
         RegistrationScreen.click_enter_button(self)
         RegistrationScreen.click_registration_button(self)
         RegistrationScreen.fill_first_name_field(self)
@@ -58,10 +49,9 @@ class TestBuyMe(TestCase):
         PickBusinessScreen.fill_in_an_amount(self)
         PickBusinessScreen.click_submit_button(self)
         PickBusinessScreen.assert_url(self)
-        allure.attach(self.driver.get_screenshot_as_png(), name="test_pick_business_Screenshot", attachment_type=AttachmentType.PNG)
 
     def test_home_screen(self):
-        # AdditionalFunctions.Catch_Pop_Up(self)
+        AdditionalFunctions.Catch_Pop_Up(self)
         # HomeScreen.login(self)
         HomeScreen.choose_an_amount(self)
         HomeScreen.choose_an_area(self)
@@ -88,10 +78,3 @@ class TestBuyMe(TestCase):
 
     def tearDown(self):
         self.driver.quit()
-
-# driver = webdriver.Chrome(service=Service('C:\\Program Files\\chromedriver-win64\\chromedriver.exe'))
-# driver.get('https://buyme.co.il/money/20620?price=250')
-
-
-
-# time.sleep(2)

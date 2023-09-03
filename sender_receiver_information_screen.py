@@ -28,13 +28,11 @@ class SenderReceiverInformationScreen:
 
     def define_event(self):  # בחירת אירוע
         self.driver.find_element(By.XPATH, "//span['לאיזה אירוע?'=.]").click()
-        define_event = self.driver.find_elements(By.XPATH, "//li[@class='ember-view bm-select-option']")
-        define_event[0].click()
+        self.driver.find_element(By.XPATH, "//span['יום הולדת'=.]").click()
+
 
     def write_a_greeting(self):
-        clear_a_field = self.driver.find_element(By.XPATH,
-                                                 "//span[@role='button' and @aria-label='נקה הכל']")
-
+        clear_a_field = self.driver.find_element(By.XPATH, "//span['נקה הכל'=.]")
         clear_a_field.click()
         greeting = self.driver.find_element(By.XPATH,
                                             "//textarea[@rows='4' and @data-parsley-group='voucher-greeting']")
@@ -51,13 +49,11 @@ class SenderReceiverInformationScreen:
         submit_button.click()
 
     def change_to_send_later(self):
-        send_later = self.wait.until(expected_conditions.presence_of_element_located(
-            (By.XPATH, "//div[@gtm='במועד מאוחר יותר' and @role='Radio']")))
+        send_later = self.driver.find_element(By.XPATH, "//div[@gtm='במועד מאוחר יותר' and @role='Radio']")
         send_later.click()
 
     def change_to_send_now(self):
-        send_now = self.wait.until(
-            expected_conditions.presence_of_element_located((By.XPATH, "//div[@gtm='עכשיו' and @role='Radio']")))
+        send_now = self.driver.find_element(By.XPATH, "//div[@gtm='עכשיו' and @role='Radio']")
         send_now.click()
 
     def select_sms_as_way_to_send(self):
