@@ -22,8 +22,13 @@ from additional_functions import AdditionalFunctions
 class TestBuyMe(TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Chrome(service=Service('C:\\Program Files\\chromedriver-win64\\chromedriver.exe'))
-        self.driver.get('https://buyme.co.il/')
+        json_file = open('data.json', 'r')
+        data = json.load(json_file)
+        browser = data['browserType']
+        if browser == 'chrome':
+            self.driver = webdriver.Chrome(service=Service('C:\\Program Files\\chromedriver-win64\\chromedriver.exe'))
+        url = data['URL']
+        self.driver.get(url)
         self.driver.implicitly_wait(20)
         self.driver.set_page_load_timeout(20)
         self.RegistrationScreen = RegistrationScreen(self.driver)
