@@ -48,7 +48,7 @@ class TestBuyMe(TestCase):
         RegistrationScreen.press_submit_button(self)
 
     def test_pick_business_screen(self):
-        AdditionalFunctions.Catch_Pop_Up(self)
+        AdditionalFunctions.catch_pop_up(self)
         PickBusinessScreen.pick_category(self)
         PickBusinessScreen.choose_gift_card(self)
         PickBusinessScreen.fill_in_an_amount(self)
@@ -56,16 +56,15 @@ class TestBuyMe(TestCase):
         PickBusinessScreen.assert_url(self)
 
     def test_home_screen(self):
-        AdditionalFunctions.Catch_Pop_Up(self)
-        # HomeScreen.login(self)
+        AdditionalFunctions.catch_pop_up(self)
+        # HomeScreen.login(self) פונקצייה סגורה בגלל חלון אימות
         HomeScreen.choose_an_amount(self)
         HomeScreen.choose_an_area(self)
         HomeScreen.choose_a_category(self)
         HomeScreen.click_a_find_button(self)
-        self.driver.switch_to.alert.dismiss()
 
     def test_sender_receiver_information_screen(self):
-        AdditionalFunctions.Catch_Pop_Up(self)
+        AdditionalFunctions.catch_pop_up(self)
         SenderReceiverInformationScreen.go_to_page(self)
         SenderReceiverInformationScreen.change_to_for_me(self)
         SenderReceiverInformationScreen.change_to_for_someone(self)
@@ -75,6 +74,7 @@ class TestBuyMe(TestCase):
         SenderReceiverInformationScreen.upload_a_picture(self)
         SenderReceiverInformationScreen.click_submit_button(self)
         SenderReceiverInformationScreen.change_to_send_later(self)
+        SenderReceiverInformationScreen.change_to_send_now(self)
         SenderReceiverInformationScreen.select_sms_as_way_to_send(self)
         SenderReceiverInformationScreen.enter_the_recipients_phone_number(self)
         SenderReceiverInformationScreen.enter_senders_name(self)
