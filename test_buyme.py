@@ -1,17 +1,7 @@
 import json
-import time
 from unittest import TestCase
 from selenium import webdriver
-import allure
-from allure_commons.types import AttachmentType
-from selenium.webdriver import Keys
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.alert import Alert
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.relative_locator import locate_with
-from selenium.webdriver.support.select import Select
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions
 from registration_screen import RegistrationScreen
 from pick_business import PickBusinessScreen
 from home_screen import HomeScreen
