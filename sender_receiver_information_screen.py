@@ -1,12 +1,10 @@
 import allure
 from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
 
 
 class SenderReceiverInformationScreen:
     def __init__(self, driver):
-        self.wait = WebDriverWait(driver, 30)
         self.driver = driver
 
     def go_to_page(self):
@@ -142,43 +140,4 @@ class SenderReceiverInformationScreen:
             with allure.step("Element not found"):
                 allure.attach(self.driver.get_screenshot_as_png(), name="payment_button",
                               attachment_type=allure.attachment_type.PNG)
-
-
-# def change_to_for_me(self):
-#     for_me = self.wait.until(expected_conditions.presence_of_element_located((By.XPATH, "//div[@gtm='לעצמי' and @role='Radio']")))
-#     for_me.click()
-#
-# def change_to_for_someone(self):
-#     for_someone = self.wait.until(expected_conditions.presence_of_element_located((By.XPATH, "//div[@gtm='למישהו אחר' and @ role='Radio']")))
-#     for_someone.click()
-#
-# def input_name(self): #שם המקבל מתנה
-#     name = self.wait.until(expected_conditions.presence_of_element_located((By.XPATH, "//input[@title='שם מקבל המתנה']")))
-#     name.send_keys("Jenny")
-#
-# def define_event(self): #בחירת אירוע
-#     self.driver.find_element(By.XPATH, "//span['לאיזה אירוע?'=.]").click()
-#     self.driver.find_element(By.XPATH, "//span['יום הולדת'=.]").click()
-#
-# def write_a_greeting(self):
-#     clear_a_field = self.driver.find_element(By.XPATH, "//span[@class='textarea-clear-all ' and @aria-label='נקה הכל']")
-#     clear_a_field.click()
-#     greeting = self.driver.find_element(By.XPATH, "//textarea[@rows='4' and @data-parsley-group='voucher-greeting']")
-#     greeting.send_keys("They say the older you are, the smarter you become. At your age you must be a genius! Happy birthday!")
-#
-# def upload_a_picture(self):
-#     picture = self.driver.find_element(By.XPATH, "//input[@class='ember-view ember-text-field' and @accept='image/png,image/jpeg,video/quicktime,video/mp4,.mov,.qt']")
-#     picture.send_keys('C:\\Users\\ekadn\\Pictures\\donkey.jpg')
-#
-# def click_submit_button(self):
-#     submit_button = self.driver.find_element(By.XPATH, "//button[@type='submit' and @gtm='המשך']")
-#     submit_button.click()
-#
-# def change_to_send_later(self):
-#     send_later = self.wait.until(expected_conditions.presence_of_element_located((By.XPATH, "//div[@gtm='במועד מאוחר יותר' and @role='Radio']")))
-#     send_later.click()
-#
-# def change_to_send_now(self):
-#     send_now = self.wait.until(expected_conditions.presence_of_element_located((By.XPATH, "//div[@gtm='עכשיו' and @role='Radio']")))
-#     send_now.click()
 

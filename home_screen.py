@@ -1,19 +1,15 @@
-import time
 import allure
 from selenium.common import NoSuchElementException, ElementClickInterceptedException
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
 
 
 class HomeScreen:
     def __init__(self, driver):
         self.driver = driver
-        self.wait = WebDriverWait(driver, 30)
 
     def login(self):
         login = self.driver.find_element(By.CLASS_NAME, "notSigned")
         login.click()
-        time.sleep(1)
         fill_mail = self.driver.find_element(By.XPATH, "//input[@type='email']")
         fill_mail.send_keys('ekadner@gmail.com')
         fill_password = self.driver.find_element(By.XPATH, "//input[@type='password']")
@@ -69,24 +65,3 @@ class HomeScreen:
             with allure.step("Element not found"):
                 allure.attach(self.driver.get_screenshot_as_png(), name="find_button",
                               attachment_type=allure.attachment_type.PNG)
-
-
-    # def choose_an_amount(self):
-    #     self.WebDriverWait(self.driver, 20).until(
-    #         expected_conditions.presence_of_element_located((By.XPATH, "//span[@class='selected-text' and @alt='סכום']"))).click()
-    #     self.driver.find_element(By.XPATH, "//span[contains(text(), '200-299')]").click()
-    #
-    # def choose_an_area(self):
-    #     self.WebDriverWait(self.driver, 20).until(
-    #         expected_conditions.presence_of_element_located((By.XPATH, "//span[@class='selected-text' and @alt='אזור']"))).click()
-    #     self.driver.find_element(By.XPATH, "//span[contains(text(), 'ירושלים')]").click()
-    #
-    # def choose_a_category(self):
-    #     self.WebDriverWait(self.driver, 20).until(
-    #         expected_conditions.presence_of_element_located(
-    #             (By.XPATH, "//span['קטגוריה'=.]"))).click()
-    #     self.driver.find_element(By.XPATH, "//span[contains(text(), 'גיפט קארד למותגי אופנה')]").click()
-    #
-    # def click_a_find_button(self):
-    #     self.WebDriverWait(self.driver, 20).until(
-    #         expected_conditions.element_to_be_clickable((By.XPATH, "//*[@id='ember1199']"))).click()

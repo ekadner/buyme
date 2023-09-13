@@ -1,14 +1,11 @@
 import allure
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException
-
 
 
 class RegistrationScreen:
     def __init__(self, driver):
         self.driver = driver
-        self.wait = WebDriverWait(driver, 30)
 
     def click_enter_button(self):
         try:
@@ -81,19 +78,3 @@ class RegistrationScreen:
                 allure.attach(self.driver.get_screenshot_as_png(), name="submit_button",
                               attachment_type=allure.attachment_type.PNG)
 
-
-# def click_enter_button(self):
-#      click_enter_button = self.wait.until(
-#          expected_conditions.element_to_be_clickable(By.CLASS_NAME, "notSigned"))
-#      click_enter_button.click()
-#
-#  def click_registration_button(self):
-#      click_registration_button = self.wait.until(expected_conditions.element_to_be_clickabl
-#              (By.XPATH, "//span[@class='text-link theme' and @aria-label='להרשמה' and @role='link' ]"))
-#      click_registration_button.click()
-#
-#  def fill_first_name_field(self):
-#      self.WebDriverWait(self.driver, 10).until(
-#          expected_conditions.presence_of_element_located(
-#              (By.XPATH, "//input[@placeholder='שם פרטי' and @tuaandiinputdiscrp='שם פרטי' and @type='text']"))).send_keys("Jenny")
-#
