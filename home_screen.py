@@ -13,7 +13,7 @@ class HomeScreen:
         fill_mail = self.driver.find_element(By.XPATH, "//input[@type='email']")
         fill_mail.send_keys('ekadner@gmail.com')
         fill_password = self.driver.find_element(By.XPATH, "//input[@type='password']")
-        fill_password.send_keys('4Ukiruki')
+        fill_password.send_keys('4UK32uki')
         remember_me_off = self.driver.find_element(By.CLASS_NAME, "fill")
         remember_me_off.click()
         submit = self.driver.find_element(By.TAG_NAME, "button")
